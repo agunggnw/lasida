@@ -12,7 +12,7 @@ $GLOBALS['kode'] = $tagp['No_Pel'];
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Edit Tagihan dengan Nomor Pelanggan <?php echo $GLOBALS['kode']; ?></h3>
-<a class="btn" href="tagihan.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
+<a class="btn" href="tagihan.php?bayar=0"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
 
 <?php
 $id_brg=mysql_real_escape_string($_GET['id']);

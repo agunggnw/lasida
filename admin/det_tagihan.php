@@ -21,7 +21,7 @@ $GLOBALS['Alamat'] = $val['Alamat'];
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Detail Tagihan</h3>
-<a class="btn" href="tagihan.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
+<a class="btn" href="tagihan.php?bayar=0"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
 <table class="table">
 	<tr>
 		<td>No. Pelanggan</td>

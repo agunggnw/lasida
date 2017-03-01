@@ -63,7 +63,7 @@ $start = ($page - 1) * $per_hal;
 		<th>Tanggal Bayar</th>
 		<th>Bulan </th>
 		<th>Meteran </th>
-		<th>Jumlah Bayar</th>
+		<th>Tarif</th>
 		<th>Status</th>
 		<th>Opsi</th>
 	</tr>
@@ -102,7 +102,9 @@ $start = ($page - 1) * $per_hal;
 				 }
 			?></td>
 			<td><?php echo $b['mKubik'] ?></td>
-			<td><?php echo "Rp.".number_format($b['mKubik']*12000).",-" ?></td>
+			<td><?php 
+				echo "Rp.".number_format($b['tarif']).",-" 
+				?></td>
 			<?php
 				}
 			?>
