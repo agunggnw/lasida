@@ -1,6 +1,15 @@
 <?php include 'header.php'; ?>
 
-<h3><span class="glyphicon glyphicon-briefcase"></span>  Tagihan</h3>
+<h3>
+	<span class="glyphicon glyphicon-briefcase"></span>  Tagihan
+	<?php 
+		if ($_GET['bayar']==0) {
+			echo "yang belum dibayar";
+		} else {
+			echo "yang sudah dibayar";
+		}
+	?>
+</h3>
 <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span>Tagihan Baru</button>
 <br/>
 <br/>
@@ -26,10 +35,23 @@ $start = ($page - 1) * $per_hal;
 		</tr>
 	</table>
 </div>
-<form action="cari_act.php" method="get">
-	<div class="input-group col-md-5 col-md-offset-7">
-		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
-		<input type="text" class="form-control" placeholder="Cari .." aria-describedby="basic-addon1" name="cari">
+<form action="cari_act.php" method="get" style="margin-top: 30px">
+	<div class="row">
+	<br><br>
+		<div class="col-md-2 col-md-offset-5">
+			<?php if ($_GET['bayar']==1): ?>
+				<a href="tagihan.php?bayar=0" class="btn btn-default btn-block">Tagihan belum dibayar</a>
+			<?php endif ?>
+			<?php if ($_GET['bayar']==0): ?>
+				<a href="tagihan.php?bayar=1" class="btn btn-default btn-block">Tagihan sudah dibayar</a>
+			<?php endif ?>
+		</div>
+		<div class="col-md-5">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+				<input type="text" class="form-control" placeholder="Cari .." aria-describedby="basic-addon1" name="cari">
+			</div>
+		</div>
 	</div>
 </form>
 <br/>
@@ -46,11 +68,12 @@ $start = ($page - 1) * $per_hal;
 		<th>Opsi</th>
 	</tr>
 	<?php
+	$idnf = $_GET['bayar'];
 	if(isset($_GET['cari'])){
 		$cari=mysql_real_escape_string($_GET['cari']);
 		$brg=mysql_query("select * from tagihan where Nama like '%$cari%' or No_Pel like '%$cari%	'");
 	}else{
-		$brg=mysql_query("select * from tagihan limit $start, $per_hal");
+		$brg=mysql_query("select * from tagihan where status = '$idnf' limit $start, $per_hal");
 	}
 	$no=1;
 	while($b=mysql_fetch_array($brg)){
@@ -64,18 +87,34 @@ $start = ($page - 1) * $per_hal;
 				while($val=mysql_fetch_array($sql)){ ?>
 				<td><?php echo $val['No_Pel']; ?></td>
 				<td><?php echo $val['Nama']; ?></td>
-			<td><?php echo date('d', $b['timestamps']) ?></td>
-			<td><?php echo date('F', $b['timestamps']) ?></td>
+			<td><?php 
+				if ($b['status']==0) {
+				 	echo "Belum dibayar";
+				 } else {
+				 	echo date('d', $b['ts_bayar']);
+				 }
+			?></td>
+			<td><?php 
+				if ($b['status']==0) {
+				 	echo "Belum dibayar";
+				 } else {
+				 	echo date('F', $b['ts_bayar']);
+				 }
+			?></td>
 			<td><?php echo $b['mKubik'] ?></td>
 			<td><?php echo "Rp.".number_format($b['mKubik']*12000).",-" ?></td>
 			<?php
 				}
 			?>
 			<td><?php 
-				if ($b['status'] != 1) {
-					echo "Belum dibayar";
-				} else {
-					echo "Sudah dibayar";
+				switch ($b['status']) {
+					case 0:
+						echo "Belum dibayar";
+						break;
+					
+					default:
+						echo "Sudah dibayar";
+						break;
 				}
 			 ?></td>
 			<td>
@@ -150,14 +189,6 @@ $start = ($page - 1) * $per_hal;
 							?>
 						</select>
 					</div>
-					<div class="form-group">
-						<label>Meteran</label>
-						<input name="meteran" type="text" class="form-control" placeholder="Meteran Baru..">
-					</div>
-					<div class="form-group">
-					<label>Jumlah Tagihan</label>
-						<input name="jmlTagihan" type="text" class="form-control" placeholder="Jumlah Bayar ..">
-				</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 						<input type="submit" class="btn btn-primary" value="Simpan">
@@ -168,6 +199,9 @@ $start = ($page - 1) * $per_hal;
 </div>
 </div>
 
+<?php
+	include 'Modal/bayar_tagihan.php';
+?>
 
 
 <?php

@@ -60,9 +60,10 @@
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>
 			<li><a href="pelanggan.php"><span class="glyphicon glyphicon-briefcase"></span>  Pelanggan</a></li>
-			<li><a href="tagihan.php"><span class="glyphicon glyphicon-briefcase"></span>  Pembayaran</a></li>
+			<li><a href="tagihan.php?bayar=0"><span class="glyphicon glyphicon-briefcase"></span>  Pembayaran</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>  Laporan</a></li>
-			<li><a href="ganti_pass.php"><span class="glyphicon glyphicon-lock"></span> Administrator</a></li>
+			<li><a href="administrator.php"><span class="glyphicon glyphicon-lock"></span> Administrator</a></li>
+			<li><a href="ganti_pass.php"><span class="glyphicon glyphicon-lock"></span> Ganti Password</a></li>
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
 		</ul>
 	</div>

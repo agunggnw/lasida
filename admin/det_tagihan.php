@@ -1,60 +1,80 @@
 <?php
 include 'header.php';
+include 'Class/DB.php';
+
+$tag = new DB('tagihan');
+
+$pel = new DB('pelanggan');
+$fetch = mysql_fetch_array($tag->getOne('id',$_GET['id']));
+$val = mysql_fetch_array($pel->getOne('id', $fetch['id_pelanggan']));
+
+$GLOBALS['status'] = $fetch['status'];
+
+$GLOBALS['no_pel'] = $val['No_Pel'];
+$GLOBALS['nama_pel'] = $val['Nama'];
+$GLOBALS['telp'] = $val['Telp'];
+$GLOBALS['No_KTP'] = $val['No_Ktp'];
+$GLOBALS['No_KK'] = $val['No_KK'];
+$GLOBALS['Gender'] = $val['Gender'];
+$GLOBALS['Kecamatan'] = $val['Kecamatan'];
+$GLOBALS['Alamat'] = $val['Alamat'];
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Detail Tagihan</h3>
 <a class="btn" href="tagihan.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
+<table class="table">
+	<tr>
+		<td>No. Pelanggan</td>
+		<td><?php echo $GLOBALS['no_pel'] ?></td>
+	</tr>
+	<tr>
+		<td>Nama Pelanggan</td>
+		<td><?php echo $GLOBALS['nama_pel']; ?></td>
+	</tr>
+	<tr>
+		<td>No Telepon</td>
+		<td><?php echo $GLOBALS['telp']; ?></td>
+	</tr>
+	<tr>
+		<td>No. KTP</td>
+		<td><?php echo $GLOBALS['No_KTP']; ?></td>
+	</tr>
+	<tr>
+		<td>No. Kartu Keluarga</td>
+		<td><?php echo $GLOBALS['No_KK']; ?></td>
+	</tr>
+	<tr>
+		<td>Jenis Kelamin</td>
+		<td><?php echo $GLOBALS['Gender']; ?></td>
+	</tr>
+	<tr>
+		<td>Kecamatan</td>
+		<td><?php echo $GLOBALS['Kecamatan']; ?></td>
+	</tr>
+	<tr>
+		<td>Alamat</td>
+		<td><?php echo $GLOBALS['Alamat']; ?></td>
+	</tr>
+	<tr>
+		<td>Status</td>
+		<td>
+		<?php
+			switch ($GLOBALS['status']) {
+				case 0:
+					echo "Tagihan belum dibayarkan";
+					break;
 
-<?php
-$id_brg=mysql_real_escape_string($_GET['id']);
+				case 1:
+					echo "Tagihan sudah dibayarkan";
+					break;
+				
+				default:
+					echo "Tagihan sudah dibayarkan";
+					break;
+			}
+		?>
+		</td>
+	</tr>
+</table>
 
-
-$det=mysql_query("select * from tagihan where id='$id_brg'")or die(mysql_error());
-while($d=mysql_fetch_array($det)){
-	?>
-	<table class="table">
-		<tr>
-			<td>No. Pelanggan</td>
-			<td><?php echo $d['No_Pel']; ?></td>
-		</tr>
-		<tr>
-			<td>Nama Pelanggan</td>
-			<td><?php echo $d['Nama']; ?></td>
-		</tr>
-		<tr>
-			<td>No Telepon</td>
-			<td><?php echo $d['Telp']; ?></td>
-		</tr>
-		<tr>
-			<td>No. KTP</td>
-			<td><?php echo $d['No_Ktp']; ?></td>
-		</tr>
-		<tr>
-			<td>No. Kartu Keluarga</td>
-			<td><?php echo $d['No_KK']; ?></td>
-		</tr>
-		<tr>
-			<td>Jenis Kelamin</td>
-			<td><?php echo $d['Gender']; ?></td>
-		</tr>
-		<tr>
-			<td>Kecamatan</td>
-			<td><?php echo $d['Kecamatan']; ?></td>
-		</tr>
-		<tr>
-			<td>Kelurahan</td>
-			<td><?php echo $d['Kelurahan']; ?></td>
-		</tr>
-		<tr>
-			<td>Alamat</td>
-			<td><?php echo $d['Alamat']; ?></td>
-		</tr>
-		<tr>
-			<td>Status</td>
-			<td><?php echo $d['Status']; ?></td>
-		</tr>
-	</table>
-	<?php
-}
-?>
 <?php include 'footer.php'; ?>

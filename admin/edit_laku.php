@@ -1,8 +1,17 @@
 <?php
 include 'header.php';
+include 'Class/DB.php';
+
+$tag = new DB('tagihan');
+$tagq = mysql_fetch_array($tag->getOne('id', $_GET['id']));
+
+$pel = new DB('pelanggan');
+$tagp = mysql_fetch_array($pel->getOne('id', $tagq['id_pelanggan']));
+$GLOBALS['kode'] = $tagp['No_Pel'];
+
 ?>
 
-<h3><span class="glyphicon glyphicon-briefcase"></span>  Edit Barang</h3>
+<h3><span class="glyphicon glyphicon-briefcase"></span>  Edit Tagihan dengan Nomor Pelanggan <?php echo $GLOBALS['kode']; ?></h3>
 <a class="btn" href="tagihan.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
 
 <?php
@@ -11,7 +20,7 @@ $id_brg=mysql_real_escape_string($_GET['id']);
 $det=mysql_query("select * from tagihan where id='$id_brg'")or die(mysql_error());
 while($d=mysql_fetch_array($det)){
 	?>
-	<form action="update_laku.php" method="post">
+	<form action="bayar_tagihan.php" method="post">
 		<table class="table">
 			<tr>
 				<td></td>
@@ -19,36 +28,20 @@ while($d=mysql_fetch_array($det)){
 			</tr>
 
 			<tr>
-				<td>Tanggal</td>
-				<td><input name="tgl" type="text" class="form-control" id="tgl" autocomplete="off" value="<?php echo $d['tanggal'] ?>"></td>
+				<td>Tanggal Bayar</td>
+				<td><input name="tanggal" type="text" class="form-control" id="tgl" autocomplete="off" ></td>
 			</tr>
 			<tr>
-				<td>Nama</td>
-				<td>
-					<select class="form-control" name="nama">
-						<?php
-						$brg=mysql_query("select * from barang");
-						while($b=mysql_fetch_array($brg)){
-							?>
-							<option <?php if($d['nama']==$b['nama']){echo "selected"; } ?> value="<?php echo $b['nama']; ?>"><?php echo $b['nama'] ?></option>
-							<?php
-						}
-						?>
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<td>Harga</td>
-				<td><input type="text" class="form-control" name="harga" value="<?php echo $d['harga'] ?>"></td>
+				<td>Meteran</td>
+				<td><input type="text" class="form-control" name="meteran" ></td>
 			</tr>
 			<tr>
-				<td>Jumlah</td>
-				<td><input type="text" class="form-control" name="jumlah" value="<?php echo $d['jumlah'] ?>"></td>
+				<td>Jumlah Bayar</td>
+				<td><input type="text" class="form-control" name="jumlah" ></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" class="btn btn-info" value="Simpan"></td>
+				<td><input type="submit" class="btn btn-info" value="Bayar Tagihan"></td>
 			</tr>
 		</table>
 	</form>

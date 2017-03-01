@@ -54,12 +54,27 @@ while($d=mysql_fetch_array($det)){
 			<?php
 				$id = mysql_real_escape_string($GLOBALS['id']);
 				$w = mysql_query("select * from tagihan where id_pelanggan='$id'")or die(mysql_error());
-				while($d=mysql_fetch_array($w)){
-					if ($d['status'] != 1) {
-						echo "Belum dibayar";
-					} else {
-						echo "Sudah dibayar";
-					}
+				$d=mysql_fetch_array($w);
+				switch ($d) {
+					case null:
+						echo "Belum ada tagihan";
+						break;
+
+					default:
+							switch ($d['status']) {
+								case 0:
+									echo "Tagihan belum dibayarkan";
+									break;
+
+								case 1:
+									echo "Tagihan sudah dibayarkan";
+									break;
+								
+								default:
+									echo "Tagihan sudah dibayarkan";
+									break;
+							}
+						break;
 				}
 			?>
 			</td>
