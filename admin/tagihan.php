@@ -23,37 +23,52 @@ $halaman=ceil($jum / $per_hal);
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $per_hal;
 ?>
-<div class="col-md-12">
-	<table class="col-md-2">
-		<tr>
-			<td>Jumlah Tagihan</td>
-			<td><?php echo $jum; ?></td>
-		</tr>
-		<tr>
-			<td>Jumlah Halaman</td>
-			<td><?php echo $halaman; ?></td>
-		</tr>
-	</table>
-</div>
-<form action="cari_act.php" method="get" style="margin-top: 30px">
-	<div class="row">
-	<br><br>
-		<div class="col-md-2 col-md-offset-5">
-			<?php if ($_GET['bayar']==1): ?>
-				<a href="tagihan.php?bayar=0" class="btn btn-default btn-block">Tagihan belum dibayar</a>
-			<?php endif ?>
-			<?php if ($_GET['bayar']==0): ?>
-				<a href="tagihan.php?bayar=1" class="btn btn-default btn-block">Tagihan sudah dibayar</a>
-			<?php endif ?>
-		</div>
-		<div class="col-md-5">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
-				<input type="text" class="form-control" placeholder="Cari .." aria-describedby="basic-addon1" name="cari">
-			</div>
-		</div>
+<div class="row">
+	<div class="col-md-12">
+		<table class="col-md-2">
+			<tr>
+				<td>Jumlah Tagihan</td>
+				<td><?php echo $jum; ?></td>
+			</tr>
+			<tr>
+				<td>Jumlah Halaman</td>
+				<td><?php echo $halaman; ?></td>
+			</tr>
+		</table>
 	</div>
-</form>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<form action="filter_tagihan.php" method="get" style="margin-top: 30px">
+			<div class="row">
+			<br><br>
+				<div class="col-md-12">
+					<div class="input-group">
+						<select name="filter_tagihan">
+							<option value="0">Filter berdasarkan</option>
+							<option value="0">Belum dibayar</option>
+							<option value="1">Sudah dibayar</option>
+						</select>
+						<button type="submit">Refresh</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<form action="cari_act.php" method="get" style="margin-top: 30px">
+			<div class="row">
+			<br><br>
+				<div class="col-md-12">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+						<input type="text" class="form-control" placeholder="Cari .." aria-describedby="basic-addon1" name="cari">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 <br/>
 <table class="table">
 	<tr>
@@ -122,7 +137,7 @@ $start = ($page - 1) * $per_hal;
 			<td>
 				<a href="det_tagihan
 				.php?id=<?php echo $b['id']; ?>" class="btn btn-info">Detail</a>
-				<a href="edit_laku.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Edit</a>
+				<a href="edit_laku.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Bayar</a>
 				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapus_laku.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
 			</td>
 		</tr>
@@ -179,17 +194,7 @@ $start = ($page - 1) * $per_hal;
 				<form action="tmb_tagihan_act.php" method="post">
 					<div class="form-group">
 						<label>No Pelanggan</label>
-						<select type="submit" name="pelanggan" class="form-control" onchange="submit">
-							<option>No Pelanggan ..</option>
-							<?php
-							$pil=mysql_query("select * from pelanggan");
-							while($p=mysql_fetch_array($pil)){
-								?>
-								<option value="<?php echo $p['id'] ?>"><?php echo $p['No_Pel']." a.n ".$p['Nama'] ?></option>
-								<?php
-							} 
-							?>
-						</select>
+						<input type="text" name="pelanggan" placeholder="Nomor pelanggan" class="form-control">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
