@@ -16,7 +16,6 @@ $GLOBALS['telp'] = $val['Telp'];
 $GLOBALS['No_KTP'] = $val['No_Ktp'];
 $GLOBALS['No_KK'] = $val['No_KK'];
 $GLOBALS['Gender'] = $val['Gender'];
-$GLOBALS['Kecamatan'] = $val['Kecamatan'];
 $GLOBALS['Alamat'] = $val['Alamat'];
 ?>
 
@@ -49,7 +48,13 @@ $GLOBALS['Alamat'] = $val['Alamat'];
 	</tr>
 	<tr>
 		<td>Kecamatan</td>
-		<td><?php echo $GLOBALS['Kecamatan']; ?></td>
+		<td>
+			<?php 
+				$kec = new DB('kecamatan');
+				$val = mysql_fetch_array($kec->getOne('id', $val['Kecamatan']));
+				echo $val['nama_kecamatan'];
+			?>
+		</td>
 	</tr>
 	<tr>
 		<td>Alamat</td>

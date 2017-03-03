@@ -8,10 +8,10 @@
 	$GLOBALS['harga'] = $setting->getHarga();
 
 	$pelanggan = new DB('pelanggan');
-	$GLOBALS['jumlahPelanggan'] = mysql_result($pelanggan->getAll(), 0);
+	$GLOBALS['jumlahPelanggan'] = count(mysql_result($pelanggan->getAll(), 0));
 
 	$tagihan = new DB('tagihan');
-	$GLOBALS['jumlahTagihan'] = mysql_result($tagihan->getAll(), 0);
+	$GLOBALS['jumlahTagihan'] = count(mysql_result($tagihan->getAll(), 0));
 
 ?>
 

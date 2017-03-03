@@ -127,7 +127,7 @@ $start = ($page - 1) * $per_hal;
 							$pil=mysql_query("select * from kecamatan");
 							while($p=mysql_fetch_array($pil)){
 								?>
-								<option><?php echo $p['nama_kecamatan'] ?></option>
+								<option value="<?php echo $p['id']; ?>"><?php echo $p['nama_kecamatan'] ?></option>
 
 								<?php
 							}

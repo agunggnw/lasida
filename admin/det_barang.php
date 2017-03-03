@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+include 'Class/DB.php';
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Detail Pelanggan</h3>
@@ -39,7 +40,13 @@ while($d=mysql_fetch_array($det)){
 		</tr>
 		<tr>
 			<td>Kecamatan</td>
-			<td><?php echo $d['Kecamatan']; ?></td>
+			<td>
+				<?php 
+					$kec = new DB('kecamatan');
+					$val = mysql_fetch_array($kec->getOne('id', $d['Kecamatan']));
+					echo $val['nama_kecamatan'];
+				?>
+			</td>
 		</tr>
 		<tr>
 			<td>Alamat</td>

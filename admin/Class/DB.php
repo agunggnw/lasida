@@ -11,7 +11,7 @@ class DB
 
 	public function getAll()
 	{
-		$sql = mysql_query("SELECT COUNT(*) FROM $this->db");
+		$sql = mysql_query("SELECT * FROM $this->db");
 		return $sql;
 	}
 
