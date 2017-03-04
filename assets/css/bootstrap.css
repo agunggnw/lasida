@@ -6211,3 +6211,19 @@ button.close {
   text-align: center;
   background-color: #f8f8f8;
 }
+.submenu{
+    background:#115087;
+    display: none;
+}
+.open .submenu{
+  display: block;
+}
+.submenu li{
+  list-style: none;
+  background:#115087;
+  padding:10px;
+}
+
+.submenu li a{
+    color: #fff;
+}
