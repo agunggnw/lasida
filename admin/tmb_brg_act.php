@@ -11,7 +11,7 @@ $kelurahan=$_POST['kelurahan'];
 $alamat=$_POST['alamat'];
 $noPlgnGnrt = "TGR-".time();
 
-mysql_query("insert into pelanggan values('','$noPlgnGnrt','$nama','$noTlp','$KTP','$KK','$jnsKelamin','$kecamatan','$alamat')");
+mysql_query("insert into pelanggan values('','$noPlgnGnrt','$nama','$noTlp','$KTP','$KK','$jnsKelamin','$kecamatan', '$kelurahan','$alamat')");
 header("location:pelanggan.php");
 
  ?>

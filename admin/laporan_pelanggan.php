@@ -5,6 +5,9 @@
 	$kec = new DB('kecamatan');
 	$GLOBALS['kec'] = $kec->getAll();
 
+	$kel = new DB('kelurahan');
+	$GLOBALS['kel'] = $kel->getAll();
+
 	$per_hal=10;
 	$jumlah_record=mysql_query("SELECT COUNT(*) from tagihan");
 	$jum=mysql_result($jumlah_record, 0);
@@ -16,11 +19,11 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<p class="lead">Laporan Pelanggan</p>
+		<p class="lead">Laporan</p>
 		<hr>
 	</div>
 	<div class="row">
-		<form action="laporan_act.php" method="post">
+		<form action="laporan_pelanggan_act.php" method="post">
 			<div class="col-md-6">
 					<label for="basic-url">Kecamatan</label><br>
 					<select name="kecamatan" class="form-control">
@@ -33,44 +36,33 @@
 					</select>
 			</div>
 			<div class="col-md-6">
-				<label for="basic-url">Tagihan</label><br>
-				<select name="bayar" class="form-control">
-					<option value="*">Semua tagihan</option>
-					<option value="0">Belum dibayar</option>
-					<option value="1">Sudah dibayar</option>
-				</select>
+					<label for="basic-url">Kelurahan</label><br>
+					<select name="kelurahan" class="form-control">
+						<option value="*">Semua kelurahan</option>
+						<?php 
+							while ($fetch = mysql_fetch_array($GLOBALS['kel'])) {							
+						?>
+						<option value="<?php echo $fetch['id'] ?>"><?php echo $fetch['nama'] ?></option>
+						<?php } ?>
+					</select>
 			</div>
 			<div class="col-md-12" style="margin-top: 30px">
 				<input type="hidden" value="1" name="view">
 				<button type="submit"	class="btn btn-primary">Lihat</button>
+				<?php 
+					if (isset($_GET['view'])) {
+						echo '<a type="submit"	class="btn btn-success">Cetak</a>';
+					}
+				?>
 			</div>
 		</form>
 	</div>
-	<div class="row">
-		<?php if (isset($_GET['view'])) { ?>
-			<?php if ($_GET['view'] == 1) { ?>
-				<div class="col-md-12">
-					<hr>
-					<p class="lead">
-						Menampilkan tagihan belum dibayar pada
-						<?php 
-							if (isset($_GET['kec'])) {
-								if ($_GET['kec'] == '*') {
-									echo "semua kecamatan";
-								} else {
-									$kec = new DB('kecamatan');
-									$take = mysql_fetch_array($kec->getOne('id',$_GET['kec']));
-									echo "Kecamatan ".ucwords($take['nama_kecamatan']);
-								}
-							} 
-						?>
-					</p>
-				</div>
-			<?php } 
-				include 'laporan_table.php';
+	<div class="row" style="margin-top: 50px">
+			<?php 
+				if (isset($_GET['view'])) {
+				include 'laporan_pelanggan_table.php';
+				}
 			?>
-
-		<?php } ?>
 		</div>
 	</div>
 </div>

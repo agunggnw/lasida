@@ -41,12 +41,27 @@ while($d=mysql_fetch_array($det)){
 			<tr>
 				<td>Kecamatan</td>
 				<td><select type="submit" name="kecamatan" class="form-control" onchange="submit">
-					<option><?php echo $d['Kecamatan'] ?></option>
+					<option value="<?php echo $d['Kecamatan'] ?>">Pilih Kecamatan</option>
 					<?php
 					$pil=mysql_query("select * from kecamatan");
 					while($p=mysql_fetch_array($pil)){
 						?>
-						<option><?php echo $p['nama_kecamatan'] ?></option>
+						<option value="<?php echo $p['id'] ?>"><?php echo $p['nama_kecamatan'] ?></option>
+
+						<?php
+					}
+					?>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Kelurahan</td>
+				<td><select type="submit" name="kelurahan" class="form-control" onchange="submit">
+					<option value="<?php echo $d['kelurahan_id'] ?>">Pilih Kelurahan</option>
+					<?php
+					$pil=mysql_query("select * from kelurahan") or die("error");
+					while($p=mysql_fetch_array($pil)){
+						?>
+						<option value="<?php echo $p['id'] ?>"><?php echo $p['nama'] ?></option>
 
 						<?php
 					}
