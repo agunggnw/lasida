@@ -70,9 +70,9 @@
 			<li><a href="administrator.php"><span class="glyphicon glyphicon-lock"></span> Administrator</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-lock"></span> Master & Konfigurasi
 				<ul class="submenu">
-					<li><a href="laporan_pelanggan.php">Kecamatan</a></li>
-					<li><a href="laporan_tagihan.php">Kelurahan</a></li>
-					<li><a href="laporan_tagihan.php">Konfigurasi</a></li>
+					<li><a href="konfigurasi_kecamatan.php">Kecamatan</a></li>
+					<li><a href="konfigurasi_kelurahan.php">Kelurahan</a></li>
+					<li><a href="konfigurasi.php">Konfigurasi</a></li>
 				</ul></a>
 			</li>
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
