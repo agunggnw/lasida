@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../assets/js/jquery-ui/jquery-ui.css">
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
-	<script type="text/javascript" src="../assets/js/jquery.js"></script>
+	<script type="text/javascript" src="../assets/js/admin.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.js"></script>
 </head>
@@ -58,12 +58,23 @@
 
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>
+			<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>
 			<li><a href="pelanggan.php"><span class="glyphicon glyphicon-briefcase"></span>  Pelanggan</a></li>
-			<li><a href="tagihan.php?bayar=0"><span class="glyphicon glyphicon-briefcase"></span>  Pembayaran</a></li>
-			<li><a href="laporan.php"><span class="glyphicon glyphicon-briefcase"></span>  Laporan</a></li>
+			<li><a href="tagihan.php?bayar=0"><span class="glyphicon glyphicon-briefcase"></span>  Tagihan & Pembayaran</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>  Laporan</a>
+				<ul class="submenu">
+					<li><a href="laporan_pelanggan.php">Pelanggan</a></li>
+					<li><a href="laporan_tagihan.php">Tagihan</a></li>
+				</ul>
+			</li>
 			<li><a href="administrator.php"><span class="glyphicon glyphicon-lock"></span> Administrator</a></li>
-			<li><a href="ganti_pass.php"><span class="glyphicon glyphicon-lock"></span> Ganti Password</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-lock"></span> Master & Konfigurasi
+				<ul class="submenu">
+					<li><a href="laporan_pelanggan.php">Kecamatan</a></li>
+					<li><a href="laporan_tagihan.php">Kelurahan</a></li>
+					<li><a href="laporan_tagihan.php">Konfigurasi</a></li>
+				</ul></a>
+			</li>
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
 		</ul>
 	</div>
