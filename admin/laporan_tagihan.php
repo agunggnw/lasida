@@ -35,6 +35,89 @@
 						</div>
 				</form>
 			</div>
+			<div class="col-md-4">
+				<form action="laporan_tagihan_by_rgmon.php" method="post">
+						<div class="panel panel-default">
+						  <div class="panel-heading">Berdasarkan jenjang bulan</div>
+						  <div class="panel-body">
+						  	<div class="row">
+						  		<div class="col-md-4">
+								    <select class="form-control" name="startmon">
+								    	<option value="1">Januari</option>
+								    	<option value="2">Februari</option>
+								    	<option value="3">Maret</option>
+								    	<option value="4">April</option>
+								    	<option value="5">Mei</option>
+								    	<option value="6">Juni</option>
+								    	<option value="7">July</option>
+								    	<option value="8">Agustus</option>
+								    	<option value="9">September</option>
+								    	<option value="10">Oktober</option>
+								    	<option value="11">November</option>
+								    	<option value="12">Desember</option>
+								    </select>
+						  		</div>
+						  		<div class="col-md-4">
+						  		<select class="form-control" name="endmon">
+						  				<option value="1">Januari</option>
+						  				<option value="2">Februari</option>
+						  				<option value="3">Maret</option>
+						  				<option value="4">April</option>
+						  				<option value="5">Mei</option>
+						  				<option value="6">Juni</option>
+						  				<option value="7">July</option>
+						  				<option value="8">Agustus</option>
+						  				<option value="9">September</option>
+						  				<option value="10">Oktober</option>
+						  				<option value="11">November</option>
+						  				<option value="12">Desember</option>
+						  			</select>
+						  		</div>
+						  		<div class="col-md-4">
+						  			<input type="text" class="form-control" placeholder="Tahun" name="yr">
+						  		</div>
+						  	</div>
+						    <hr>
+								<button class="btn btn-primaty" type="submit">Lihat</button>
+								<?php 
+									$startmon = $_GET['startmon'];
+									$endmon = $_GET['endmon'];
+									$yr = $_GET['yr'];
+
+									if (isset($_GET['stbyrgmon'])) {
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgmon=1&startmon=$startmon&endmon=$endmon&yr=$yr'	class='btn btn-success'>Cetak</a>";
+									}
+								?>
+						  </div>
+						</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form action="laporan_tagihan_by_nopel.php" method="post">
+						<div class="panel panel-default">
+						  <div class="panel-heading">Berdasarkan jenjang tahun</div>
+						  <div class="panel-body">
+						  	<div class="row">
+						  		<div class="col-md-6">
+						  			<input type="text" class="form-control" placeholder="Tahun mulai">
+						  		</div>
+							  	<div class="col-md-6">
+							  			<input type="text" class="form-control" placeholder="Tahun akhir">
+							  		</div>
+							  </div>
+						    <hr>
+								<button class="btn btn-primaty" type="submit">Lihat</button>
+								<?php 
+									if (isset($_GET['stbyno'])) {
+										$no = $_GET['no'];
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
+									}
+								?>
+						  </div>
+						  </div>
+						</div>
+				</form>
+			</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
@@ -42,6 +125,9 @@
 					<?php 
 						if (isset($_GET['stbyno'])) {
 						include 'laporan_tagihan_stbyno.php';
+						}
+						if (isset($_GET['stbyrgmon'])) {
+						include 'laporan_tagihan_stbyrgmon.php';
 						}
 					?>
 				</div>

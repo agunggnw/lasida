@@ -6,8 +6,8 @@ if (isset($_GET['stbyno'])) {
 	include 'tagihan_stbyno.php';
 }
 
-if (condition) {
-	# code...
+if (isset($_GET['stbyrgmon'])) {
+	include 'tagihan_stbyrgmon.php';
 }
 
 use Dompdf\Dompdf;
