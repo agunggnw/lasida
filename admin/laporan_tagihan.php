@@ -80,9 +80,9 @@
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
 								<?php 
-									$startmon = $_GET['startmon'];
-									$endmon = $_GET['endmon'];
-									$yr = $_GET['yr'];
+									$startmon = isset( $_GET['startmon'] ) ? $_GET['startmon']  : '' ;
+									$endmon = isset ( $_GET['endmon'] ) ? $_GET['endmon'] : '' ;
+									$yr = isset( $_GET['yr'] ) ? $_GET['yr'] : '' ;
 
 									if (isset($_GET['stbyrgmon'])) {
 										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgmon=1&startmon=$startmon&endmon=$endmon&yr=$yr'	class='btn btn-success'>Cetak</a>";
