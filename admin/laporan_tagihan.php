@@ -1,5 +1,5 @@
-<?php 
-	include 'header.php'; 
+<?php
+	include 'header.php';
 	include 'Class/DB.php';
 
 	$per_hal=10;
@@ -25,7 +25,7 @@
 						    <input type="text" class="form-control" placeholder="No Pelanggan" name="nopel">
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
-								<?php 
+								<?php
 									if (isset($_GET['stbyno'])) {
 										$no = $_GET['no'];
 										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
@@ -79,12 +79,11 @@
 						  	</div>
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
-								<?php 
-									$startmon = $_GET['startmon'];
-									$endmon = $_GET['endmon'];
-									$yr = $_GET['yr'];
-
+								<?php
 									if (isset($_GET['stbyrgmon'])) {
+										$startmon = $_GET['startmon'];
+										$endmon = $_GET['endmon'];
+										$yr = $_GET['yr'];
 										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgmon=1&startmon=$startmon&endmon=$endmon&yr=$yr'	class='btn btn-success'>Cetak</a>";
 									}
 								?>
@@ -93,24 +92,25 @@
 				</form>
 			</div>
 			<div class="col-md-4">
-				<form action="laporan_tagihan_by_nopel.php" method="post">
+				<form action="laporan_tagihan_by_rgyr.php" method="post">
 						<div class="panel panel-default">
 						  <div class="panel-heading">Berdasarkan jenjang tahun</div>
 						  <div class="panel-body">
 						  	<div class="row">
 						  		<div class="col-md-6">
-						  			<input type="text" class="form-control" placeholder="Tahun mulai">
+						  			<input type="text" class="form-control" placeholder="Tahun mulai" name="startyr">
 						  		</div>
 							  	<div class="col-md-6">
-							  			<input type="text" class="form-control" placeholder="Tahun akhir">
+							  			<input type="text" class="form-control" placeholder="Tahun akhir" name="endyr">
 							  		</div>
 							  </div>
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
-								<?php 
-									if (isset($_GET['stbyno'])) {
-										$no = $_GET['no'];
-										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
+								<?php
+								$startyr = $_GET['startyr'];
+								$endyr = $_GET['endyr'];
+									if (isset($_GET['stbyrgyr'])) {
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgyr=1&startyr=$startyr&endyr=$endyr'	class='btn btn-success'>Cetak</a>";
 									}
 								?>
 						  </div>
@@ -122,12 +122,15 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row" style="margin-top: 50px">
-					<?php 
+					<?php
 						if (isset($_GET['stbyno'])) {
 						include 'laporan_tagihan_stbyno.php';
 						}
 						if (isset($_GET['stbyrgmon'])) {
 						include 'laporan_tagihan_stbyrgmon.php';
+						}
+						if (isset($_GET['stbyrgyr'])) {
+						include 'laporan_tagihan_stbyrgyr.php';
 						}
 					?>
 				</div>
