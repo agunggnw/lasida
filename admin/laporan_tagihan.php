@@ -92,24 +92,25 @@
 				</form>
 			</div>
 			<div class="col-md-4">
-				<form action="laporan_tagihan_by_nopel.php" method="post">
+				<form action="laporan_tagihan_by_rgyr.php" method="post">
 						<div class="panel panel-default">
 						  <div class="panel-heading">Berdasarkan jenjang tahun</div>
 						  <div class="panel-body">
 						  	<div class="row">
 						  		<div class="col-md-6">
-						  			<input type="text" class="form-control" placeholder="Tahun mulai">
+						  			<input type="text" class="form-control" placeholder="Tahun mulai" name="startyr">
 						  		</div>
 							  	<div class="col-md-6">
-							  			<input type="text" class="form-control" placeholder="Tahun akhir">
+							  			<input type="text" class="form-control" placeholder="Tahun akhir" name="endyr">
 							  		</div>
 							  </div>
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
 								<?php
-									if (isset($_GET['stbyno'])) {
-										$no = $_GET['no'];
-										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
+								$startyr = $_GET['startyr'];
+								$endyr = $_GET['endyr'];
+									if (isset($_GET['stbyrgyr'])) {
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgyr=1&startyr=$startyr&endyr=$endyr'	class='btn btn-success'>Cetak</a>";
 									}
 								?>
 						  </div>
@@ -127,6 +128,9 @@
 						}
 						if (isset($_GET['stbyrgmon'])) {
 						include 'laporan_tagihan_stbyrgmon.php';
+						}
+						if (isset($_GET['stbyrgyr'])) {
+						include 'laporan_tagihan_stbyrgyr.php';
 						}
 					?>
 				</div>
