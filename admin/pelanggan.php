@@ -135,6 +135,21 @@ $start = ($page - 1) * $per_hal;
 						</select>
 					</div>
 					<div class="form-group">
+						<label>Kelurahan</label>
+						<select type="submit" name="kelurahan" class="form-control" onchange="submit">
+							<option>Pilih Kelurahan ..</option>
+							<?php
+							$pil=mysql_query("select * from kelurahan");
+							while($p=mysql_fetch_array($pil)){
+								?>
+								<option value="<?php echo $p['id']; ?>"><?php echo $p['nama'] ?></option>
+
+								<?php
+							}
+							?>
+						</select>
+					</div>
+					<div class="form-group">
 						<label>Alamat</label>
 						<textarea name="alamat" class="form-control" placeholder="Alamat .."></textarea>
 					</div>

@@ -16,7 +16,7 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<p class="lead">Laporan</p>
+		<p class="lead">Laporan Pelanggan</p>
 		<hr>
 	</div>
 	<div class="row">
