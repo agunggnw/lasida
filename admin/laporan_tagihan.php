@@ -1,5 +1,5 @@
-<?php 
-	include 'header.php'; 
+<?php
+	include 'header.php';
 	include 'Class/DB.php';
 
 	$per_hal=10;
@@ -25,7 +25,7 @@
 						    <input type="text" class="form-control" placeholder="No Pelanggan" name="nopel">
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
-								<?php 
+								<?php
 									if (isset($_GET['stbyno'])) {
 										$no = $_GET['no'];
 										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
@@ -79,12 +79,11 @@
 						  	</div>
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
-								<?php 
-									$startmon = isset( $_GET['startmon'] ) ? $_GET['startmon']  : '' ;
-									$endmon = isset ( $_GET['endmon'] ) ? $_GET['endmon'] : '' ;
-									$yr = isset( $_GET['yr'] ) ? $_GET['yr'] : '' ;
-
+								<?php
 									if (isset($_GET['stbyrgmon'])) {
+										$startmon = $_GET['startmon'];
+										$endmon = $_GET['endmon'];
+										$yr = $_GET['yr'];
 										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgmon=1&startmon=$startmon&endmon=$endmon&yr=$yr'	class='btn btn-success'>Cetak</a>";
 									}
 								?>
@@ -107,7 +106,7 @@
 							  </div>
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
-								<?php 
+								<?php
 									if (isset($_GET['stbyno'])) {
 										$no = $_GET['no'];
 										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
@@ -122,7 +121,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row" style="margin-top: 50px">
-					<?php 
+					<?php
 						if (isset($_GET['stbyno'])) {
 						include 'laporan_tagihan_stbyno.php';
 						}
