@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 03, 2017 at 05:05 
+-- Generation Time: Mar 05, 2017 at 03:35 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -73,6 +73,27 @@ INSERT INTO `kecamatan` (`id`, `nama_kecamatan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kelurahan`
+--
+
+CREATE TABLE `kelurahan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `kecamatan_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelurahan`
+--
+
+INSERT INTO `kelurahan` (`id`, `nama`, `kecamatan_id`) VALUES
+(1, 'Bencongan', 3),
+(2, 'Neglasari', 1),
+(3, 'Tes', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `meteran`
 --
 
@@ -97,6 +118,7 @@ CREATE TABLE `pelanggan` (
   `No_KK` varchar(25) NOT NULL,
   `Gender` varchar(10) NOT NULL,
   `Kecamatan` int(11) NOT NULL,
+  `kelurahan_id` int(11) NOT NULL,
   `Alamat` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -104,8 +126,11 @@ CREATE TABLE `pelanggan` (
 -- Dumping data for table `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`id`, `No_Pel`, `Nama`, `Telp`, `No_Ktp`, `No_KK`, `Gender`, `Kecamatan`, `Alamat`) VALUES
-(31, 'TGR-1488553157', 'Agung Gunawan', '082319878833', '09090909091', '0909090909', 'Perempuan', 1, 'asd');
+INSERT INTO `pelanggan` (`id`, `No_Pel`, `Nama`, `Telp`, `No_Ktp`, `No_KK`, `Gender`, `Kecamatan`, `kelurahan_id`, `Alamat`) VALUES
+(35, 'TGR-1488642248', 'Agung Gunawan', '544544', '4545454', '0909090909', 'Perempuan', 1, 2, 'aasd'),
+(36, 'TGR-1488644443', 'asaaaaaaaaaaaaaaaaaa', '0000000000000', '4545454', '0909090909', 'Perempuan', 1, 2, 'as'),
+(37, 'TGR-1488644751', 'asaaaaaaaaaaaaaaaaaa', '085267667676', '4545454', '0909090909090909090909090', 'Perempuan', 1, 3, 'asdasdas'),
+(38, 'TGR-1488644873', 'asdas', 'adasd', 'asdasd', 'asdasd', 'Laki-Laki', 3, 1, 'asdasdsad');
 
 -- --------------------------------------------------------
 
@@ -144,14 +169,6 @@ CREATE TABLE `tagihan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tagihan`
---
-
-INSERT INTO `tagihan` (`id`, `id_pelanggan`, `id_kecamatan`, `mKubik`, `jumlah_bayar`, `tarif`, `ts_bayar`, `timestamps`, `status`) VALUES
-(21, 31, 1, 150, 150000, 187500, 1488495600, 1488556839, 1),
-(22, 31, 1, 0, 0, 0, 0, 1488556913, 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -165,6 +182,12 @@ ALTER TABLE `admin`
 -- Indexes for table `kecamatan`
 --
 ALTER TABLE `kecamatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kelurahan`
+--
+ALTER TABLE `kelurahan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -206,6 +229,11 @@ ALTER TABLE `admin`
 ALTER TABLE `kecamatan`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
+-- AUTO_INCREMENT for table `kelurahan`
+--
+ALTER TABLE `kelurahan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `meteran`
 --
 ALTER TABLE `meteran`
@@ -214,7 +242,7 @@ ALTER TABLE `meteran`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `setting`
 --
@@ -224,7 +252,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

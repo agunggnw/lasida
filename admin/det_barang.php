@@ -48,6 +48,16 @@ while($d=mysql_fetch_array($det)){
 				?>
 			</td>
 		</tr>
+				<tr>
+			<td>Kelurahan</td>
+			<td>
+				<?php 
+					$kec = new DB('kelurahan');
+					$val = mysql_fetch_array($kec->getOne('id', $d['kelurahan_id']));
+					echo $val['nama'];
+				?>
+			</td>
+		</tr>
 		<tr>
 			<td>Alamat</td>
 			<td><?php echo $d['Alamat']; ?></td>
