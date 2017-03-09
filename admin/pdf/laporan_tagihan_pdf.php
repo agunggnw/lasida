@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once 'dompdf/autoload.inc.php';
 
@@ -8,6 +8,10 @@ if (isset($_GET['stbyno'])) {
 
 if (isset($_GET['stbyrgmon'])) {
 	include 'tagihan_stbyrgmon.php';
+}
+
+if (isset($_GET['stbyrgyr'])) {
+	include 'tagihan_stbyrgyr.php';
 }
 
 use Dompdf\Dompdf;
