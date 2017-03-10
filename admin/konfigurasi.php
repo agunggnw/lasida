@@ -8,16 +8,16 @@
 	$GLOBALS['harga'] = $setting->getHarga();
 
 	$pelanggan = new DB('pelanggan');
-	$GLOBALS['jumlahPelanggan'] = $pelanggan->count();
+	$GLOBALS['jumlahPelanggan'] = count(mysql_result($pelanggan->getAll(), 0));
 
 	$tagihan = new DB('tagihan');
-	$GLOBALS['jumlahTagihan'] = $tagihan->count();
+	$GLOBALS['jumlahTagihan'] = count(mysql_result($tagihan->getAll(), 0));
 
 ?>
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <p class="lead">Administrator Page</p>
+    <p class="lead">Konfigurasi Page</p>
     <hr>
     <div class="row">
     	<div class="col-md-6">

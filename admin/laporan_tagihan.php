@@ -84,7 +84,7 @@
 										$startmon = $_GET['startmon'];
 										$endmon = $_GET['endmon'];
 										$yr = $_GET['yr'];
-										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgmon=1&startmon=$startmon&endmon=$endmon&yr=$yr'	class='btn btn-success' target='_blank'>Cetak</a>";
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgmon=1&startmon=$startmon&endmon=$endmon&yr=$yr'	class='btn btn-success'>Cetak</a>";
 									}
 								?>
 						  </div>
@@ -107,10 +107,9 @@
 						    <hr>
 								<button class="btn btn-primaty" type="submit">Lihat</button>
 								<?php
-									if (isset($_GET['stbyrgyr'])) {
-										$startyr = $_GET['startyr'];
-										$endyr = $_GET['endyr'];
-										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyrgyr=1&startyr=$startyr&endyr=$endyr'	class='btn btn-success' target='_blank'>Cetak</a>";
+									if (isset($_GET['stbyno'])) {
+										$no = $_GET['no'];
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
 									}
 								?>
 						  </div>
