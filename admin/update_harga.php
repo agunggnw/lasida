@@ -5,6 +5,6 @@ $harga=$_POST['harga'];
 
 $setting = new Setting;
 $setting->updateHarga($harga);
-header("location:administrator.php");
+header("location:konfigurasi.php");
 
 ?>

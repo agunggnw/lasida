@@ -28,7 +28,7 @@
 								<?php
 									if (isset($_GET['stbyno'])) {
 										$no = $_GET['no'];
-										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success'>Cetak</a>";
+										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success' target='_blank'>Cetak</a>";
 									}
 								?>
 						  </div>
@@ -92,16 +92,16 @@
 				</form>
 			</div>
 			<div class="col-md-4">
-				<form action="laporan_tagihan_by_nopel.php" method="post">
+				<form action="laporan_tagihan_by_rgyr.php" method="post">
 						<div class="panel panel-default">
 						  <div class="panel-heading">Berdasarkan jenjang tahun</div>
 						  <div class="panel-body">
 						  	<div class="row">
 						  		<div class="col-md-6">
-						  			<input type="text" class="form-control" placeholder="Tahun mulai">
+						  			<input type="text" class="form-control" placeholder="Tahun mulai" name="startyr">
 						  		</div>
 							  	<div class="col-md-6">
-							  			<input type="text" class="form-control" placeholder="Tahun akhir">
+							  			<input type="text" class="form-control" placeholder="Tahun akhir" name="endyr">
 							  		</div>
 							  </div>
 						    <hr>
@@ -127,6 +127,9 @@
 						}
 						if (isset($_GET['stbyrgmon'])) {
 						include 'laporan_tagihan_stbyrgmon.php';
+						}
+						if (isset($_GET['stbyrgyr'])) {
+						include 'laporan_tagihan_stbyrgyr.php';
 						}
 					?>
 				</div>
