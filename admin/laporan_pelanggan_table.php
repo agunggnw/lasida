@@ -17,8 +17,8 @@
 		}
 
 		$no=1; ?>
-	<?php if ($b=mysql_fetch_array($brg) == null): ?>
-		<?php echo "Data Kosong" ?>
+	<?php if (mysql_num_rows($brg) == null): ?>
+		<p class="lead">Data Kosong</p>
 		<?php else: ?>
 			<table class="table table-hover">
 				<tr>
@@ -45,4 +45,10 @@
 			<?php
 		}
 		?>
+		<?php if (mysql_num_rows($brg) != 0): ?>
+			<tr>
+				<td><a type='submit' href="pdf/laporan_pelanggan_pdf.php?<?php echo "kec=".$kec."&kel=".$kel ?>"	class='btn btn-success' target='_blank'>Cetak</a></td>
+			</tr>
+		<?php endif ?>
+
 	</table>

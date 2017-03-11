@@ -28,6 +28,8 @@ ob_start();
 		$brg=mysql_query("select * from pelanggan") or die("Error");
 	} elseif ($kec == '*' && $kel != '*') {
 		$brg=mysql_query("select * from pelanggan where kelurahan_id='$kel'") or die("Error");
+	} elseif ($kec != '*' && $kel == '*') {
+		$brg=mysql_query("select * from pelanggan where Kecamatan='$kec'") or die("Error");
 	} elseif ($kec != '*' && $kel != '*') {
 		$brg=mysql_query("select * from pelanggan where Kecamatan='$kec' and kelurahan_id='$kel'") or die("Error");
 	}
