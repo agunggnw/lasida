@@ -74,4 +74,9 @@
 		<?php
 	}
 	?>
+		<?php if (mysql_num_rows($brg) != 0): ?>
+		<tr>
+			<td><a type='submit' href='pdf/laporan_tagihan_pdf.php?<?php echo "stbyrgmon=1&startmon=".$startmon."&endmon=".$endmon."&yr=".$yr; ?>'	class='btn btn-success' target='_blank'>Cetak</a></td>
+		</tr>
+	<?php endif ?>
 </table>
