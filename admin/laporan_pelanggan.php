@@ -53,7 +53,6 @@
 					if (isset($_GET['view'])) {
 						$kec = $_GET['kec'];
 						$kel = $_GET['kel'];
-						echo '<a target="_blank" href="pdf/laporan_pelanggan_pdf.php?kec=' . $kec . '&kel=' . $kel . '" class="btn btn-success">Cetak</a>';
 					}
 				?>
 			</div>

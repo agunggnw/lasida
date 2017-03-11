@@ -20,7 +20,7 @@
 			$endyr = $_GET['endyr'];
 			$range = range($startyr, $endyr);
 			for ($i= $startyr; $i < $endyr+1; $i++) {
-			if (date('Y',$b['ts_bayar']) == $i ) {
+			if (date('Y',$b['timestamps']) == $i ) {
 		?>
 			<tr>
 				<td><?php echo $no++ ?></td>
@@ -73,4 +73,9 @@
 		<?php
 	}
 	?>
+	<?php if (mysql_num_rows($brg) != 0): ?>
+		<tr>
+			<td><a type='submit' href='pdf/laporan_tagihan_pdf.php?<?php echo "stbyrgyr=1&startyr=".$startyr."&endyr=".$endyr; ?>'	class='btn btn-success' target='_blank'>Cetak</a></td>
+		</tr>
+	<?php endif ?>
 </table>
