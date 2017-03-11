@@ -1,12 +1,3 @@
-	<table class="table table-hover">
-		<tr>
-			<th class="col-md-1">No</th>
-			<th class="col-md-2">Nama Pelanggan</th>
-			<th class="col-md-2">No Pelanggan</th>
-			<th class="col-md-1">No Telepon</th>
-			<th class="col-md-3">Alamat</th>
-			<th class="col-md-3">Status</th>
-		</tr>
 		<?php
 		$kec = $_GET['kec'];
 		$kel = $_GET['kel'];
@@ -25,7 +16,21 @@
 			$brg=mysql_query("select * from pelanggan where Kecamatan='$kec' and kelurahan_id='$kel'") or die('error');
 		}
 
-		$no=1;
+		$no=1; ?>
+	<?php if ($b=mysql_fetch_array($brg) == null): ?>
+		<?php echo "Data Kosong" ?>
+		<?php else: ?>
+			<table class="table table-hover">
+				<tr>
+					<th class="col-md-1">No</th>
+					<th class="col-md-2">Nama Pelanggan</th>
+					<th class="col-md-2">No Pelanggan</th>
+					<th class="col-md-1">No Telepon</th>
+					<th class="col-md-3">Alamat</th>
+					<th class="col-md-3">Status</th>
+				</tr>
+	<?php endif ?>
+	<?php
 		while($b=mysql_fetch_array($brg)){
 
 			?>
@@ -40,10 +45,4 @@
 			<?php
 		}
 		?>
-		<tr>
-			<td colspan="4"></td>
-			<td>
-
-			</td>
-		</tr>
 	</table>
