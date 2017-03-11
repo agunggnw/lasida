@@ -28,7 +28,7 @@
 								<?php
 									if (isset($_GET['stbyno'])) {
 										$no = $_GET['no'];
-										echo "<a type='submit' href='pdf/laporan_tagihan_pdf.php?stbyno=1&no=$no'	class='btn btn-success' target='_blank'>Cetak</a>";
+										echo '<a target="_blank" href="pdf/laporan_tagihan_pdf.php?stbyno=1&no=' . $no . '"	class="btn btn-success" >Cetak</a>';
 									}
 								?>
 						  </div>

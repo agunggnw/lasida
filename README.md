@@ -17,11 +17,11 @@
   - CRUD : Belom
 - Master & Konfigurasi
   - Kecamatan 
-    - CRUD : BELOM
+    - CRUD : DONE
   - Kelurahan
-    - CRUD : BELOM
+    - CRUD : Masih Error Pas Input Data
   - Konfigurasi
     - Ubah harga permeter : DONE
     - Tambah Pelanggan : Field Kelurahan Belum ada
-    - Tambah Tagihan : Belum Bisa
+    - Tambah Tagihan : Belum Bisa [ Ada Error ]
   
