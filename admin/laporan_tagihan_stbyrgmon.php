@@ -21,7 +21,7 @@
 			$yr = $_GET['yr'];
 			$range = range($startmon, $endmon);
 			for ($i= $startmon; $i < $endmon+1; $i++) { 
-			if (date('n',$b['ts_bayar']) == $i && date('Y',$b['ts_bayar']) == $yr ) {
+			if ((date('n',$b['ts_bayar']) == $i && date('Y',$b['ts_bayar']) == $yr) or (date('n',$b['timestamps']) == $i && date('Y',$b['timestamps']) == $yr) ) {
 		?>
 			<tr>
 				<td><?php echo $no++ ?></td>
