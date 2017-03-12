@@ -140,7 +140,7 @@ $start = ($page - 1) * $per_hal;
 				<?php if ($b['status'] != 1): ?>
 					<a href="edit_laku.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Bayar</a>
 				<?php endif ?>
-				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapus_laku.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
+				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapus_laku.php?<?php echo "id=".$b['id']."&bayar=".$idnf; ?>' }" class="btn btn-danger">Hapus</a>
 			</td>
 		</tr>
 

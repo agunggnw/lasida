@@ -38,7 +38,7 @@
             }
           ?>
         </select>
-        <input type="text" name="kecamatan" placeholder="Kelurahan" class="form-control"><br>
+        <input type="text" name="record" placeholder="Kelurahan" class="form-control"><br>
         <input type="submit" value="Tambah Kecamatan" class="btn btn-default">
       </div>
     </div>
