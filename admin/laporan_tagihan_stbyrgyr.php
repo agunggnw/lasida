@@ -73,9 +73,13 @@
 		<?php
 	}
 	?>
-	<?php if (mysql_num_rows($brg) != 0): ?>
+	<?php if ($no != 1): ?>
 		<tr>
 			<td><a type='submit' href='pdf/laporan_tagihan_pdf.php?<?php echo "stbyrgyr=1&startyr=".$startyr."&endyr=".$endyr; ?>'	class='btn btn-success' target='_blank'>Cetak</a></td>
 		</tr>
+		<?php else: ?>
+			<tr>
+				<p class="lead">Tagihan dengan jenjang tahun yang diberikan tidak ada</p>
+			</tr>
 	<?php endif ?>
 </table>

@@ -139,10 +139,13 @@ $start = ($page - 1) * $per_hal;
 						<select type="submit" name="kelurahan" class="form-control" onchange="submit">
 							<option>Pilih Kelurahan ..</option>
 							<?php
-							$pil=mysql_query("select * from kelurahan");
-							while($p=mysql_fetch_array($pil)){
+							$kel=mysql_query("select * from kelurahan order by kecamatan_id") or die("Error");
+							while($e=mysql_fetch_array($kel)){
+								$kecId = $e['kecamatan_id'];
+								$w=mysql_query("select * from kecamatan where id='$kecId'") or die("Error");
+								$kec = mysql_fetch_array($w);
 								?>
-								<option value="<?php echo $p['id']; ?>"><?php echo $p['nama'] ?></option>
+								<option value="<?php echo $e['id']; ?>"><?php echo $kec['nama_kecamatan']." - ".$e['nama'] ?></option>
 
 								<?php
 							}
