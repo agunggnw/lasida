@@ -8,18 +8,18 @@
   - AutoComplete Find no pelanggan : Onproggress
 - Laporan
   - Tagihan
-    - Tampil Data : Done
-    - Cetak Data : Belum Open new tab
-  - Pelanggan
     - Tampil Data : Belum Bisa
-    - Cetak Data : Belum Open new tab
+    - Cetak Data : DONE
+  - Pelanggan
+    - Tampil Data : DONE
+    - Cetak Data : DONE
 - Administrator
-  - CRUD : Belom
+  - CRUD : Belom 
 - Master & Konfigurasi
   - Kecamatan 
     - CRUD : DONE
   - Kelurahan
-    - CRUD : Masih Error Pas Input Data
+    - CRUD : DONE
   - Konfigurasi
     - Ubah harga permeter : DONE
     - Tambah Pelanggan : Field Kelurahan Belum ada
