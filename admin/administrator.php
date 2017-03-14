@@ -16,6 +16,34 @@
 			  Berhasil menambahkan <strong>Staff</strong> baru
 			</div>
 		<?php endif ?>
+		<?php if ($_GET['saved'] == 3): ?>
+			<div class="alert alert-success" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  Berhasil merubah <strong>password</strong>
+			</div>
+		<?php endif ?>
+		<?php if ($_GET['saved'] == 0): ?>
+			<div class="alert alert-danger" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  Kecocokan Password salah
+			</div>
+		<?php endif ?>
+		</div>
+	<?php endif ?>
+	<?php if (isset($_GET['deleted'])): ?>
+		<div class="col-md-12">
+		<?php if ($_GET['deleted'] == 1): ?>
+			<div class="alert alert-danger" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  Berhasil menghapus <strong>Administrator</strong>
+			</div>
+		<?php endif ?>
+		<?php if ($_GET['deleted'] == 2): ?>
+			<div class="alert alert-danger" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  Berhasil menghapus <strong>Staff</strong>
+			</div>
+		<?php endif ?>
 		</div>
 	<?php endif ?>
 	<div class="col-md-6">
@@ -29,8 +57,11 @@
 				    <form action="./user/new_user.php" method="post">
 				    	<p class="lead">Tambah Administator</p>
 				    	<input type="hidden" class="form-control" placeholder="Username" name="role_id" value="1">
-				    	<input type="text" class="form-control" placeholder="Username" name="uname"><br>
+				    	<input type="text" class="form-control" placeholder="Username" name="uname" value="<?php if (isset($_GET['admin'])) {
+				    		echo $_GET['admin'];
+				    	} ?>"><br>
 				    	<input type="password" class="form-control" placeholder="Password" name="password"><br>
+				    	<input type="password" class="form-control" placeholder="Confirm Password" name="confirm"><br>
 				    	<input type="submit" class="btn btn-block btn-primary" value="Tambah Administator">
 				    </form>
 				  </div>
@@ -41,6 +72,7 @@
 				    		<tr>
 				    			<th>No</th>
 				    			<th>Username</th>
+				    			<th>Opsi</th>
 				    		</tr>
 				    	</thead>
 				    	<tbody>
@@ -51,6 +83,10 @@
 					    	<tr>
 					    		<td><?php echo $no++ ?></td>
 					    		<td><?php echo $val['uname'] ?></td>
+					    		<td>
+					    			<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='user/delete.php?id=<?php echo $val['id']."&role=admin"; ?>' }" class="btn btn-danger">Hapus</a>
+					    			<a href="<?php echo "forgot.php?id=".$val['id']."&role=1" ?>" class="btn btn-warning">Ganti Password</a>
+					    		</td>
 					    	</tr>
 								<?php
 					    		}
@@ -73,8 +109,11 @@
 				    <form action="./user/new_user.php" method="post">
 				    	<p class="lead">Tambah Staff</p>
 				    	<input type="hidden" class="form-control" placeholder="Username" name="role_id" value="2">
-				    	<input type="text" class="form-control" placeholder="Username" name="uname"><br>
+				    	<input type="text" class="form-control" placeholder="Username" name="uname" value="<?php if (isset($_GET['staff'])) {
+				    		echo $_GET['staff'];
+				    	} ?>"><br>
 				    	<input type="password" class="form-control" placeholder="Password" name="password"><br>
+				    	<input type="password" class="form-control" placeholder="Confirm Password" name="confirm"><br>
 				    	<input type="submit" class="btn btn-block btn-success" value="Tambah Staff">
 				    </form>
 				  </div>
@@ -85,8 +124,9 @@
 				    		<tr>
 				    			<th>No</th>
 				    			<th>Username</th>
+				    			<th>Opsi</th>
 				    		</tr>
-				    	</thead>
+				    	</thead>`
 				    	<tbody>
 					    	<?php 
 					    		$sql = mysql_query("select * from admin where role_id='2'");
@@ -95,6 +135,10 @@
 						    <tr>
 					    		<td><?php echo $no++ ?></td>
 					    		<td><?php echo $val['uname'] ?></td>
+					    		<td>
+					    			<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='user/delete.php?id=<?php echo $val['id']."&role=staff"; ?>' }" class="btn btn-danger">Hapus</a>
+					    			<a href="<?php echo "forgot.php?id=".$val['id']."&role=1" ?>" class="btn btn-warning">Ganti Password</a>
+					    		</td>
 					    	</tr>
 								<?php
 					    		}
@@ -106,4 +150,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div>`

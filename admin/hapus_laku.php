@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+
 $id=$_GET['id'];
 $bayar=$_GET['bayar'];;
 var_dump($bayar);

@@ -9,6 +9,7 @@ $ses = mysql_fetch_array($query);
 if(mysql_num_rows($query)==1){
 	$_SESSION['uname']=$uname;
 	$_SESSION['role']= $ses['role_id'];
+	$_SESSION['id']= $ses['id'];
 	header("location:admin/index.php");
 }else{
 	header("location:index.php?pesan=gagal")or die(mysql_error());
