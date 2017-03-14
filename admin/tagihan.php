@@ -147,8 +147,11 @@ $start = ($page - 1) * $per_hal;
 		<?php
 	}
 	?>
+	<?php if ($no ==  1): ?>
+		<tr><td colspan="9">Tagihan Kosong</td></tr>
+	<?php endif ?>
 	<tr>
-		<td colspan="7">Total Pemasukan</td>
+		<td colspan="9">Total Pemasukan</td>
 		<?php
 		if(isset($_GET['tanggal'])){
 			$tanggal=mysql_real_escape_string($_GET['tanggal']);
@@ -162,7 +165,7 @@ $start = ($page - 1) * $per_hal;
 		?>
 	</tr>
 	<tr>
-		<td colspan="7">Total Laba</td>
+		<td colspan="9">Total Laba</td>
 		<?php
 		if(isset($_GET['tanggal'])){
 			$tanggal=mysql_real_escape_string($_GET['tanggal']);
