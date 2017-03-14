@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2017 at 03:35 
+-- Generation Time: Mar 14, 2017 at 02:38 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -30,15 +30,22 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `uname` varchar(30) NOT NULL,
   `pass` varchar(70) NOT NULL,
-  `foto` text NOT NULL
+  `foto` text NOT NULL,
+  `role_id` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `uname`, `pass`, `foto`) VALUES
-(8, 'Admin', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg');
+INSERT INTO `admin` (`id`, `uname`, `pass`, `foto`, `role_id`) VALUES
+(8, 'Admin', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg', '1'),
+(9, 'Staff', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg', '2'),
+(10, 'Staff2', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg', '2'),
+(11, 'admin2', 'cd0acfe085eeb0f874391fb9b8009bed', 'logo.jpg', '1'),
+(12, 'staff3', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg', '2'),
+(13, 'admin3', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg', '1'),
+(14, 'staff4', '21232f297a57a5a743894a0e4a801fc3', 'logo.jpg', '2');
 
 -- --------------------------------------------------------
 
@@ -87,9 +94,8 @@ CREATE TABLE `kelurahan` (
 --
 
 INSERT INTO `kelurahan` (`id`, `nama`, `kecamatan_id`) VALUES
-(1, 'Bencongan', 3),
-(2, 'Neglasari', 1),
-(3, 'Tes', 1);
+(8, 'tester', 1),
+(9, 'red', 2);
 
 -- --------------------------------------------------------
 
@@ -127,10 +133,26 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id`, `No_Pel`, `Nama`, `Telp`, `No_Ktp`, `No_KK`, `Gender`, `Kecamatan`, `kelurahan_id`, `Alamat`) VALUES
-(35, 'TGR-1488642248', 'Agung Gunawan', '544544', '4545454', '0909090909', 'Perempuan', 1, 2, 'aasd'),
-(36, 'TGR-1488644443', 'asaaaaaaaaaaaaaaaaaa', '0000000000000', '4545454', '0909090909', 'Perempuan', 1, 2, 'as'),
-(37, 'TGR-1488644751', 'asaaaaaaaaaaaaaaaaaa', '085267667676', '4545454', '0909090909090909090909090', 'Perempuan', 1, 3, 'asdasdas'),
-(38, 'TGR-1488644873', 'asdas', 'adasd', 'asdasd', 'asdasd', 'Laki-Laki', 3, 1, 'asdasdsad');
+(35, 'TGR-1488642248', 'Agung Gunawan', '544544', '4545454', '0909090909', 'Perempuan', 1, 2, 'aasd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'administrator'),
+(2, 'staff');
 
 -- --------------------------------------------------------
 
@@ -203,6 +225,12 @@ ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `setting`
 --
 ALTER TABLE `setting`
@@ -222,7 +250,7 @@ ALTER TABLE `tagihan`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `kecamatan`
 --
@@ -232,7 +260,7 @@ ALTER TABLE `kecamatan`
 -- AUTO_INCREMENT for table `kelurahan`
 --
 ALTER TABLE `kelurahan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `meteran`
 --
@@ -242,7 +270,12 @@ ALTER TABLE `meteran`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `setting`
 --
@@ -252,7 +285,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
