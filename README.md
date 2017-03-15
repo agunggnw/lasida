@@ -8,13 +8,15 @@
   - AutoComplete Find no pelanggan : Onproggress
 - Laporan
   - Tagihan
-    - Tampil Data : Belum Bisa
+    - Tampil Data : Udah gua update sqlnya masih belum jalan
     - Cetak Data : DONE
   - Pelanggan
     - Tampil Data : DONE
     - Cetak Data : DONE
 - Administrator
-  - CRUD : Belom 
+  - CRUD : BUG
+      - Pass Edit Password, Meskipun data tidak sama masih bisa masuk
+      - Hapus Staff, notifikasinya berhasil hapus adminstrator
 - Master & Konfigurasi
   - Kecamatan 
     - CRUD : DONE
