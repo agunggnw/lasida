@@ -22,6 +22,12 @@
 			  Berhasil merubah <strong>password</strong>
 			</div>
 		<?php endif ?>
+		<?php if ($_GET['saved'] == 4): ?>
+			<div class="alert alert-danger" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  Password tidak boleh kosong
+			</div>
+		<?php endif ?>
 		<?php if ($_GET['saved'] == 0): ?>
 			<div class="alert alert-danger" role="alert">
 			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
