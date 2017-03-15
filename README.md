@@ -15,8 +15,8 @@
     - Cetak Data : DONE
 - Administrator
   - CRUD : BUG
-      - Pass Edit Password, Meskipun data tidak sama masih bisa masuk
-      - Hapus Staff, notifikasinya berhasil hapus adminstrator
+      - Pass Edit Password, Meskipun data tidak sama masih bisa masuk - (Fixed, Test)
+      - Hapus Staff, notifikasinya berhasil hapus adminstrator - (Fixed, Test)
 - Master & Konfigurasi
   - Kecamatan 
     - CRUD : DONE
@@ -24,6 +24,6 @@
     - CRUD : DONE
   - Konfigurasi
     - Ubah harga permeter : DONE
-    - Tambah Pelanggan : Field Kelurahan Belum ada
-    - Tambah Tagihan : Belum Bisa [ Ada Error ]
+    - Tambah Pelanggan : Field Kelurahan Belum ada - (Test)
+    - Tambah Tagihan : Belum Bisa [ Ada Error ] - (Test)
   
