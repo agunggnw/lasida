@@ -18,7 +18,7 @@
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="http://www.malasngoding.com" class="navbar-brand">PELAYANAN PELANGGAN PDAM TIRTA BENTENG KOTA TANGERANG</a>
+				<a href="/" class="navbar-brand">PELAYANAN PELANGGAN PDAM TIRTA BENTENG KOTA TANGERANG</a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -67,14 +67,19 @@
 					<li><a href="laporan_tagihan.php">Tagihan</a></li>
 				</ul>
 			</li>
-			<li><a href="administrator.php"><span class="glyphicon glyphicon-lock"></span> Administrator</a></li>
+			<?php if ($_SESSION['role'] == 1): ?>
+				<li><a href="administrator.php"><span class="glyphicon glyphicon-lock"></span> Administrator</a></li>
+			<?php endif ?>
 			<li><a href="#"><span class="glyphicon glyphicon-lock"></span> Master & Konfigurasi
 				<ul class="submenu">
 					<li><a href="konfigurasi_kecamatan.php">Kecamatan</a></li>
 					<li><a href="konfigurasi_kelurahan.php">Kelurahan</a></li>
+					<?php if ($_SESSION['role'] == 1): ?>
 					<li><a href="konfigurasi.php">Konfigurasi</a></li>
+					<?php endif ?>
 				</ul></a>
 			</li>
+			<li><a href="<?php echo "forgot.php?id=".$_SESSION['id']."&role=".$_SESSION['role'] ?>"><span class="glyphicon glyphicon-lock"></span> Forgot Password</a></li>
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
 		</ul>
 	</div>
