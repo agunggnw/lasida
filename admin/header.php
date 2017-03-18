@@ -79,7 +79,7 @@
 					<?php endif ?>
 				</ul></a>
 			</li>
-			<li><a href="<?php echo "forgot.php?id=".$_SESSION['id']."&role=".$_SESSION['role'] ?>"><span class="glyphicon glyphicon-lock"></span> Forgot Password</a></li>
+<!-- 			<li><a href="<?php echo "forgot.php?id=".$_SESSION['id']."&role=".$_SESSION['role'] ?>"><span class="glyphicon glyphicon-lock"></span> Forgot Password</a></li> -->
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
 		</ul>
 	</div>
