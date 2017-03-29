@@ -39,7 +39,22 @@
 							$pil=mysql_query("select * from kecamatan");
 							while($p=mysql_fetch_array($pil)){
 								?>
-								<option><?php echo $p['nama_kecamatan'] ?></option>
+								<option value="<?php echo $p['id']; ?>"><?php echo $p['nama_kecamatan'] ?></option>
+
+								<?php
+							}
+							?>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Kelurahan</label>
+						<select type="submit" name="kelurahan" class="form-control" onchange="submit">
+							<option>Pilih Kelurahan ..</option>
+							<?php
+							$pil=mysql_query("select * from kelurahan");
+							while($p=mysql_fetch_array($pil)){
+								?>
+								<option value="<?php echo $p['id']; ?>"><?php echo $p['nama'] ?></option>
 
 								<?php
 							}
@@ -56,7 +71,7 @@
 					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 					<input type="submit" class="btn btn-primary" value="Simpan">
 				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
