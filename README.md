@@ -1,5 +1,18 @@
-#Revisi Project
+# Revisi Project
 
-- ADMIN + RAB(rancangan anggaran biaya)
-- ADMIN + SPK(surat perintah kerja)
-- ADMIN + Daftar
+- Alur Pelanggan Baru
+Pendaftaran -> RAB -> LOKET -> SPK -> BA -> Status Sah Pelanggan.
+
+Buat Tabel
+Pendaftaran
+RAB
+LOKET
+SPK
+BA
+PEKERJA
+
+INTERFACE ADMIN
+LOKET
+SPK
+BA
+PEKERJA
